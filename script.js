@@ -40,11 +40,12 @@ let boxes = document.getElementsByClassName("box");
 Array.from(boxes).forEach(element =>{
     let boxtext = element.querySelector('.boxtext');
     element.addEventListener('click', ()=>{
-        if(boxtext.innerText === ''){
+        if(boxtext.innerText === '' && !isgameover){
             boxtext.innerText = turn;
             turn = changeTurn();
             audioTurn.play();
             checkWin();
+            checkDraw();
             if (!isgameover){
                 document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
             } 
@@ -52,16 +53,31 @@ Array.from(boxes).forEach(element =>{
     })
 })
 
-// Add onclick listener to reset button
+// Adding onclick listener to reset button
 reset.addEventListener('click', ()=>{
-    let boxtexts = document.querySelectorAll('.boxtext');
-    Array.from(boxtexts).forEach(element => {
-        element.innerText = ""
-    });
-    turn = "X"; 
-    isgameover = false
-    document.querySelector(".line").style.width = "0vw";
-    document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
-    document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "0px"
-})
+    // Reset game state
+    // Hide the excited.gif
+    // Reload the page to ensure a complete reset
+    window.location.reload();
+});
+
+
+
+
+// Function to check for a draw
+const checkDraw = () => {
+    let boxtext = document.getElementsByClassName('boxtext');
+    let draw = true;
+    for (let i = 0; i < boxtext.length; i++) {
+        if (boxtext[i].innerText === "") {
+            draw = false;
+            break;
+        }
+    }
+    if (draw && !isgameover) {
+        document.querySelector('.info').innerText = "Draw";
+        isgameover = true;
+    }
+}
+
 

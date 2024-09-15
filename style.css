@@ -8,15 +8,33 @@ nav {
     height: 75px;
     font-size: 27px;
     display: flex;
+    justify-content: space-between; /* Distribute items across the navbar */
     align-items: center;
     padding: 0 12px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-    nav ul {
+
+nav ul {
     list-style-type: none;
+    display: flex;
+    width: 100%;
+    justify-content: space-between; /* Spread the logo and credits */
+    padding: 0;
+    margin: 0;
+    align-items: center;
 }
+
+nav ul li {
+    padding: 0 20px;
+}
+
+.credits {
+    margin-left: auto; /* Push the credits to the extreme right */
+    font-size: 18px;
+}
+
 .gamecontainer {
-    background-color: yellow;
+    background-color: #add8e6;
     display: flex;
     justify-content: center;
     margin-top: 50px;
@@ -28,7 +46,7 @@ nav {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .box {
-    border: 2px solid black;
+    border: 2px solid #333;
     font-size: 8vw;
     cursor: pointer;
     display: flex;
@@ -44,7 +62,7 @@ nav {
 }
 .imgbox img {
     width: 0;
-    transition: width is ease-in-out;
+    transition: width 0.5s ease-in-out; /* Corrected transition property */
 }
 .br-0 {
     border-right: 0;
